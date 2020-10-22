@@ -11,12 +11,12 @@ class Post(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
-    def published(self):
-        self.published_date = timezone.now
+    def publish(self):
+        self.published_date = timezone.now()
         self.save()
 
     def approve_comment(self):
-        return self.approve_comment.filter(approved_comment=True)
+        return self.comment.filter(approved_comment = True)
 
     def get_absolute_url(self):
         return reverse("post_detail", kwargs = {'pk': self.pk})
